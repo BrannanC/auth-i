@@ -87,6 +87,11 @@ server.post('/api/login', (req, res) => {
       :  res.status(401).json({ message: 'Please log in' }); 
   }
 
+  server.delete('/', (req, res) => {
+    req.session && req.session.destroy();
+    res.status(200).json({ message: 'Good bye'});
+  })
+
 
 const port = process.env.PORT || 3300;
 server.listen(port, () => console.log(`\n** Running on port ${port} **\n`));
